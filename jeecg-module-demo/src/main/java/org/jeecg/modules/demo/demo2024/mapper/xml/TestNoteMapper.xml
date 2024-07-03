@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.jeecg.modules.demo.demo2024.mapper.TestNoteMapper">
+
+    <insert id="add" parameterType="org.jeecg.modules.demo.demo2024.entity.TestNote">
+        INSERT INTO
+        test_note(id,create_by,create_time,update_by,update_time,sys_org_code,name,age,sex,birthday,contents,year,sheng,month,remark,last_time)
+        values(#{testNote.id},#{testNote.createBy},#{testNote.createTime},#{testNote.updateBy},#{testNote.updateTime},#{testNote.sysOrgCode},#{testNote.name},
+        #{testNote.age},#{testNote.sex},#{testNote.birthday},#{testNote.contents},#{testNote.year},#{testNote.sheng},#{testNote.month},#{testNote.remark},#{testNote.lastTime});
+    </insert>
+    <update id="myUpdateById" parameterType="org.jeecg.modules.demo.demo2024.entity.TestNote">
+        UPDATE test_note
+        <set>
+            create_by = #{testNote.createBy},
+            create_time = #{testNote.createTime},
+            update_by = #{testNote.updateBy},
+            update_time = #{testNote.updateTime},
+            sys_org_code = #{testNote.sysOrgCode},
+            name = #{testNote.name},
+            age = #{testNote.age},
+            sex = #{testNote.sex},
+            birthday = #{testNote.birthday},
+            contents = #{testNote.contents},
+            year = #{testNote.year},
+            sheng = #{testNote.sheng},
+            month = #{testNote.month},
+            remark = #{testNote.remark},
+            last_time = #{testNote.lastTime},
+        </set>
+        WHERE
+        id=#{testNote.id}
+    </update>
+    <delete id="myRemoveById" parameterType="java.lang.String">
+        DELETE FROM test_note WHERE id = #{id};
+    </delete>
+<!--    <select id="getTestNoteList" parameterType="java.lang.Integer" resultType="org.jeecg.modules.demo.demo2024.entity.TestNote">-->
+<!--        select * from test_note limit #{pageNo},#{pageSize};-->
+<!--    </select>-->
+    <select id="getTestNoteInfoList" parameterType="int" resultType="org.jeecg.modules.demo.demo2024.entity.TestNote">
+        SELECT * FROM test_note;
+    </select>
+
+</mapper>
